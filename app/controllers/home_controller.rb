@@ -1,9 +1,11 @@
 class HomeController < ApplicationController
   def index
+  end
+
+  def search
     if params[:query].present?
       response = PlantSearchService.new(params[:query]).search
       @plants = response.parsed_response || []
-      Rails.logger.info "Plants: #{@plants.inspect}" # Log the response
     else
       @plants = []
     end
