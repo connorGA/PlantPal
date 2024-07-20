@@ -12,6 +12,12 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
       </li>
+
+      <%= form_with url: search_home_path, method: :get, local: true, class: "form-inline my-2 my-lg-0" do %>
+        <%= text_field_tag :query, params[:query], class: "form-control mr-sm-2", placeholder: "Search" %>
+        <%= submit_tag "Search", class: "btn btn-outline-success my-2 my-sm-0" %>
+      <% end %>
+      
     </ul>
 
     <ul class="navbar-nav ml-auto">
@@ -32,9 +38,6 @@
       <% end %>
     </ul>
 
-    <%= form_with url: search_home_path, method: :get, local: true, class: "form-inline my-2 my-lg-0" do %>
-        <%= text_field_tag :query, params[:query], class: "form-control mr-sm-2", placeholder: "Search" %>
-        <%= submit_tag "Search", class: "btn btn-outline-success my-2 my-sm-0" %>
-      <% end %>
+
   </div>
 </nav>
