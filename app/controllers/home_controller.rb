@@ -20,4 +20,14 @@ class HomeController < ApplicationController
     current_user.plants << plant unless current_user.plants.include?(plant)
     redirect_to root_path, notice: 'Plant added to your collection!'
   end
+
+  def remove_from_collection
+    plant = current_user.plants.find(params[:id])
+    current_user.plants.delete(plant)
+    redirect_to root_path, notice: 'Plant removed from your collection!'
+  end
+
+  def show
+    @plant = current_user.plants.find(params[:id])
+  end
 end

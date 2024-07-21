@@ -19,3 +19,13 @@ body {
 h1 {
   color: rgb(255, 255, 255);
 }
+
+.card-hover {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-hover:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background-color: rgb(252, 190, 74);
+}
