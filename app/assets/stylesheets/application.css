@@ -1,23 +1,15 @@
-.fixed-img {
-    height: 400px; /* Set a fixed height for all images */
-    object-fit: cover; /* Ensure images cover the space without distortion */
-    width: 100%; /* Ensure images take up the full width of the card */
-  }
-
+/* General styles */
 body {
   background-color: rgb(0, 0, 0);
 }
 
-.card {
-  background-color: rgb(255, 221, 140);
-}
-
-.list-group-item {
-  background-color: rgb(237, 226, 211);
-}
-  
 h1 {
   color: rgb(255, 255, 255);
+}
+
+/* Card styles */
+.card {
+  background-color: rgb(255, 221, 140);
 }
 
 .card-hover {
@@ -28,4 +20,36 @@ h1 {
   transform: scale(1.05);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   background-color: rgb(252, 190, 74);
+}
+
+.list-group-item {
+  background-color: rgb(237, 226, 211);
+}
+
+/* Image styles */
+.fixed-img {
+  height: 200px; /* Ensure images take up the full width of the card */
+  object-fit: cover; /* Ensure images cover the space without distortion */
+  width: 100%;
+}
+
+/* Layout for show page */
+.show-page-container {
+  display: flex;
+  justify-content: space-between; /* Spread out card and calendar */
+  align-items: flex-start;
+}
+
+.card-container {
+  flex: 1;
+  max-width: 50%; /* Make the card container cover half the screen */
+  margin-right: 1rem;
+}
+
+.calendar-placeholder {
+  flex: 1;
+  max-width: 50%; /* Make the calendar placeholder cover half the screen */
+  background-color: rgb(255, 255, 255); /* Temporary background color */
+  padding: 1rem;
+  border-radius: 5px;
 }
