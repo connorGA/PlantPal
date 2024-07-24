@@ -9,25 +9,39 @@ export default class extends Controller {
 
     form.addEventListener("submit", function(event) {
       event.preventDefault();
-      const timeInput = document.getElementById("time-input").value;
-      let time = parseInt(timeInput, 10);
+      
+      const days = parseInt(document.getElementById("days-input").value, 10) || 0;
+      const hours = parseInt(document.getElementById("hours-input").value, 10) || 0;
+      const minutes = parseInt(document.getElementById("minutes-input").value, 10) || 0;
+      
+      let totalSeconds = (days * 24 * 60 * 60) + (hours * 60 * 60) + (minutes * 60);
 
-      if (isNaN(time) || time <= 0) {
-        alert("Please enter a valid number of seconds.");
+      if (totalSeconds <= 0) {
+        alert("Please enter a valid time.");
         return;
       }
 
-      countdownDisplay.textContent = `Time remaining: ${time} seconds`;
-      const interval = setInterval(() => {
-        time -= 1;
-        countdownDisplay.textContent = `Time remaining: ${time} seconds`;
+      updateCountdownDisplay(totalSeconds);
 
-        if (time <= 0) {
+      const interval = setInterval(() => {
+        totalSeconds -= 1;
+        updateCountdownDisplay(totalSeconds);
+
+        if (totalSeconds <= 0) {
           clearInterval(interval);
           countdownDisplay.textContent = "Time's up! Water your plant!";
           alert("Time's up! Water your plant!");
         }
       }, 1000);
     });
+
+    function updateCountdownDisplay(totalSeconds) {
+      const days = Math.floor(totalSeconds / (24 * 60 * 60));
+      const hours = Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60));
+      const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+      const seconds = totalSeconds % 60;
+
+      countdownDisplay.textContent = `Time remaining: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
   }
 }
