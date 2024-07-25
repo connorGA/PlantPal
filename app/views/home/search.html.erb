@@ -5,7 +5,7 @@
     <% @plants.each do |plant_wrapper| %>
       <% plant = plant_wrapper["item"] %>
       <div class="col-md-4 d-flex align-items-stretch">
-        <div class="card mb-4">
+        <div class="card mb-4 card-hover">
           <%= image_tag plant["Img"], class: "card-img-top fixed-img", alt: (plant["Common name"]&.join(", ") || "Plant Image") %>
           <div class="card-body d-flex flex-column">
             <% common_names = plant["Common name"] || [] %>
