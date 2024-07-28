@@ -59,3 +59,45 @@ h1 {
 .col-md-6 {
   color: white
 }
+
+/* Enhanced text styles */
+.title-text {
+  /* border: 2px solid rgba(255, 255, 255, 0.6); */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  border-radius: 10px;
+}
+
+.description-text {
+  /* border: 1px solid rgba(255, 255, 255, 0.4); */
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color:  rgb(252, 190, 74);
+  border-color:  rgb(233, 171, 56);
+}
+
+.btn-primary:hover {
+  background-color: rgb(186, 133, 35);
+  border-color: rgb(142, 101, 23);
+}
+
+.btn-secondary {
+  background-color: #28a745;
+  border-color: #218f3a;
+}
+
+.btn-secondary:hover {
+  background-color: #1b742e;
+  border-color: #19682b;
+}
+
+.mx-2 {
+  margin-left: .5rem !important;
+  margin-right: .5rem !important;
+}
