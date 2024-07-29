@@ -15,8 +15,12 @@
     <h1 class="display-4 title-text">Welcome to PlantPal</h1>
     <p class="lead description-text">Your go-to app for managing your plant collection.</p>
     <div class="mt-4">
-      <%= link_to 'Get Started', new_user_registration_path, class: 'btn btn-primary btn-lg mx-2' %>
-      <%= link_to 'Log In', new_user_session_path, class: 'btn btn-secondary btn-lg mx-2' %>
+      <% if user_signed_in? %>
+        <%= link_to 'Home', root_path, class: 'btn btn-success btn-lg mx-2' %>
+      <% else %>
+        <%= link_to 'Get Started', new_user_registration_path, class: 'btn btn-primary btn-lg mx-2' %>
+        <%= link_to 'Log In', new_user_session_path, class: 'btn btn-secondary btn-lg mx-2' %>
+      <% end %>
     </div>
   </div>
 </div>
