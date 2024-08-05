@@ -139,3 +139,28 @@ h1 {
   background-color: #1b742e;
   border-color: #19682b;
 }
+
+
+/* Flash messages styles */
+.alert-container {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 500px;
+  z-index: 1050;
+  padding: 10px;
+}
+
+.alert {
+  margin-bottom: 0;
+}
+
+.alert-dismissible .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1.25rem 1rem;
+  color: inherit;
+}
