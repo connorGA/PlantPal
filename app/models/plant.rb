@@ -10,4 +10,10 @@ class Plant < ApplicationRecord
     validates :light_ideal, presence: true
     validates :url, presence: true
   end
+
+class AddTimerToPlants < ActiveRecord::Migration[6.1]
+  def change
+    add_column :plants, :timer_end_at, :datetime
+  end
+end
   

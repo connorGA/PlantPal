@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_20_212038) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_20_051902) do
   create_table "plants", force: :cascade do |t|
     t.string "common_name"
     t.string "latin_name"
@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_20_212038) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "timer_end_at"
   end
 
   create_table "user_plants", force: :cascade do |t|
