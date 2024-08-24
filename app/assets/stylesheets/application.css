@@ -164,3 +164,11 @@ h1 {
   padding: 1.25rem 1rem;
   color: inherit;
 }
+
+.timer-display {
+  font-size: 0.8rem;
+  background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+  padding: 5px;
+  border-radius: 5px;
+  color: #333; /* Dark text color */
+}

@@ -4,7 +4,7 @@
   <div class="row">
     <% @plants.each do |plant| %>
       <div class="col-sm-6 col-md-4 col-lg-3 d-flex align-items-stretch">
-        <div class="card mb-4 small-card card-hover" style="cursor: pointer;" onclick="location.href='<%= show_plant_path(plant) %>'">
+        <div class="card mb-4 small-card card-hover position-relative" style="cursor: pointer;" onclick="location.href='<%= show_plant_path(plant) %>'">
           <%= image_tag plant.image_url, class: "card-img-top fixed-img", alt: plant.common_name %>
           <div class="card-body d-flex flex-column">
             <h5 class="card-title"><%= plant.common_name %></h5>
@@ -21,6 +21,13 @@
               <%= button_to 'Remove', remove_from_collection_home_path(plant), method: :delete, class: 'btn btn-danger ml-auto' %>
             </div>
           </div>
+
+          <!-- Timer display in the top right corner of the card -->
+          <% if plant.timer_end_at.present? %>
+            <div class="timer-display position-absolute top-0 right-0 p-2 bg-white text-dark rounded">
+              <%= distance_of_time_in_words(Time.current, plant.timer_end_at) %>
+            </div>
+          <% end %>
         </div>
       </div>
     <% end %>
