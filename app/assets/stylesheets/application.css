@@ -177,3 +177,7 @@ h1 {
   z-index: 10;
 }
 
+.alert-container {
+  margin-top: 60px; 
+}
+
