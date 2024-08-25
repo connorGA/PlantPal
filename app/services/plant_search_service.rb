@@ -1,6 +1,6 @@
 require 'httparty'
 
-class 
+class PlantSearchService
   include HTTParty
   base_uri 'https://house-plants2.p.rapidapi.com'
 
