@@ -16,9 +16,9 @@
               <li class="list-group-item"><strong>Watering:</strong> <%= plant.watering %></li>
               <li class="list-group-item"><strong>Light Ideal:</strong> <%= plant.light_ideal %></li>
             </ul>
-            <div class="mt-auto d-flex justify-content-between">
+            <div class="mt-auto d-flex justify-content-between align-items-center">
               <a href="<%= plant.url %>" class="card-link" target="_blank">More Info</a>
-              <%= button_to 'Remove', remove_from_collection_home_path(plant), method: :delete, class: 'btn btn-danger ml-auto' %>
+              <%= button_to 'Remove', remove_from_collection_home_path(plant), method: :delete, class: 'btn btn-danger ml-auto mt-2' %>
             </div>
             <!-- Timer display in the top right corner of the card -->
             <% if plant.timer_end_at.present? %>

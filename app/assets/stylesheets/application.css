@@ -121,13 +121,13 @@ h1 {
 }
 
 .btn-primary {
-  background-color: rgb(252, 190, 74);
-  border-color: rgb(233, 171, 56);
+  background-color: rgb(211, 152, 42);
+  border-color: rgb(173, 126, 39);
 }
 
 .btn-primary:hover {
-  background-color: rgb(186, 133, 35);
-  border-color: rgb(142, 101, 23);
+  background-color: rgb(148, 104, 23);
+  border-color: rgb(107, 75, 16);
 }
 
 .btn-secondary {
