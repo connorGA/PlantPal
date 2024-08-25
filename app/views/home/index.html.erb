@@ -23,11 +23,16 @@
           </div>
 
           <!-- Timer display in the top right corner of the card -->
-          <% if plant.timer_end_at.present? %>
-            <div class="timer-display position-absolute top-0 right-0 p-2 bg-white text-dark rounded">
-              <%= distance_of_time_in_words(Time.current, plant.timer_end_at) %>
-            </div>
-          <% end %>
+            <% if plant.timer_end_at.present? %>
+              <% remaining_time = plant.timer_end_at - Time.current %>
+              <% days = (remaining_time / 1.day).to_i %>
+              <% hours = ((remaining_time % 1.day) / 1.hour).to_i %>
+              <% minutes = ((remaining_time % 1.hour) / 1.minute).to_i %>
+
+              <div class="timer-display position-absolute top-0 right-0 p-2 bg-white text-dark rounded">
+                <%= "#{days}d #{hours}h #{minutes}m" %>
+              </div>
+            <% end %>
         </div>
       </div>
     <% end %>
