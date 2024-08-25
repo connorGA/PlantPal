@@ -1,7 +1,7 @@
 <h1>My Plant Collection</h1>
 
 <% if @plants && @plants.any? %>
-  <div class="row">
+  <div class="row" data-controller="timer">
     <% @plants.each do |plant| %>
       <div class="col-sm-6 col-md-4 col-lg-3 d-flex align-items-stretch">
         <div class="card mb-4 small-card card-hover position-relative" style="cursor: pointer;" onclick="location.href='<%= show_plant_path(plant) %>'">
@@ -20,19 +20,13 @@
               <a href="<%= plant.url %>" class="card-link" target="_blank">More Info</a>
               <%= button_to 'Remove', remove_from_collection_home_path(plant), method: :delete, class: 'btn btn-danger ml-auto' %>
             </div>
-          </div>
-
-          <!-- Timer display in the top right corner of the card -->
+            <!-- Timer display in the top right corner of the card -->
             <% if plant.timer_end_at.present? %>
-              <% remaining_time = plant.timer_end_at - Time.current %>
-              <% days = (remaining_time / 1.day).to_i %>
-              <% hours = ((remaining_time % 1.day) / 1.hour).to_i %>
-              <% minutes = ((remaining_time % 1.hour) / 1.minute).to_i %>
-
-              <div class="timer-display position-absolute top-0 right-0 p-2 bg-white text-dark rounded">
-                <%= "#{days}d #{hours}h #{minutes}m" %>
+              <div class="timer-display position-absolute top-0 right-0 p-2 bg-white text-dark rounded" data-timer-end="<%= plant.timer_end_at.iso8601 %>" data-timer-target="countdown">
+                <!-- The live countdown will be displayed here by the Stimulus controller -->
               </div>
             <% end %>
+          </div>
         </div>
       </div>
     <% end %>

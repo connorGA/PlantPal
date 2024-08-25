@@ -166,9 +166,14 @@ h1 {
 }
 
 .timer-display {
-  font-size: 0.8rem;
-  background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #000;
   padding: 5px;
   border-radius: 5px;
-  color: #333; /* Dark text color */
+  font-size: 0.9em;
+  z-index: 10;
 }
+

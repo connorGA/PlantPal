@@ -23,27 +23,29 @@
 
   <div class="timer-container">
     <h4>Water Timer</h4>
-      <% if @plant.timer_end_at.present? %>
-        <div id="timer" data-timer-end="<%= @plant.timer_end_at.iso8601 %>"></div>
-      <% else %>
-        <p>No timer set.</p>
-      <% end %>
-      <%= form_with url: set_watering_home_path(@plant), method: :post, local: true do %>
-        <div class="form-group">
-          <label>Days</label>
-          <%= number_field_tag 'timer[days]', 0, class: 'form-control', min: 0 %>
-        </div>
-        <div class="form-group">
-          <label>Hours</label>
-          <%= number_field_tag 'timer[hours]', 0, class: 'form-control', min: 0, max: 23 %>
-        </div>
-        <div class="form-group">
-          <label>Minutes</label>
-          <%= number_field_tag 'timer[minutes]', 0, class: 'form-control', min: 0, max: 59 %>
-        </div>
-        <%= submit_tag 'Start Timer', class: 'btn btn-primary' %>
-      <% end %>
+    <% if @plant.timer_end_at.present? %>
+      <div id="timer" data-timer-end="<%= @plant.timer_end_at.iso8601 %>" data-timer-target="countdown">
+        <!-- The live countdown will be displayed here by the Stimulus controller -->
       </div>
+    <% else %>
+      <p>No timer set.</p>
+    <% end %>
+    <%= form_with url: set_watering_home_path(@plant), method: :post, local: true do %>
+      <div class="form-group">
+        <label>Days</label>
+        <%= number_field_tag 'timer[days]', 0, class: 'form-control', min: 0 %>
+      </div>
+      <div class="form-group">
+        <label>Hours</label>
+        <%= number_field_tag 'timer[hours]', 0, class: 'form-control', min: 0, max: 23 %>
+      </div>
+      <div class="form-group">
+        <label>Minutes</label>
+        <%= number_field_tag 'timer[minutes]', 0, class: 'form-control', min: 0, max: 59 %>
+      </div>
+      <%= submit_tag 'Start Timer', class: 'btn btn-primary' %>
+    <% end %>
   </div>
+</div>
 
 <%= link_to 'Back to My Collection', root_path, class: 'btn btn-secondary' %>

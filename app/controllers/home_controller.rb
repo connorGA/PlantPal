@@ -33,9 +33,14 @@ class HomeController < ApplicationController
 
   def set_watering
     @plant = current_user.plants.find(params[:id])
-    duration_in_minutes = params[:timer][:days].to_i * 1440 + params[:timer][:hours].to_i * 60 + params[:timer][:minutes].to_i
-    @plant.update(timer_end_at: Time.current + duration_in_minutes.minutes)
-
+    
+    # Calculate the duration in seconds
+    duration_in_seconds = params[:timer][:days].to_i * 86400 + params[:timer][:hours].to_i * 3600 + params[:timer][:minutes].to_i * 60
+    
+    # Update the plant's timer_end_at attribute with the current time plus the duration
+    @plant.update(timer_end_at: Time.current + duration_in_seconds.seconds)
+  
     redirect_to home_path(@plant), notice: 'Watering timer set!'
   end
+  
 end
