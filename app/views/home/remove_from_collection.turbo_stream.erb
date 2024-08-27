@@ -1,0 +1,2 @@
+<%= turbo_stream.remove dom_id(@plant) %>
+<%= turbo_stream.append "flash", partial: "home/flash", locals: { message: "Plant removed from your collection!", alert_type: "notice" } %>

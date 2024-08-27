@@ -22,10 +22,19 @@ class HomeController < ApplicationController
   end
 
   def remove_from_collection
-    plant = current_user.plants.find(params[:id])
-    current_user.plants.delete(plant)
-    redirect_to root_path, notice: 'Plant removed from your collection!'
+    @plant = current_user.plants.find(params[:id])
+    current_user.plants.delete(@plant)
+  
+    respond_to do |format|
+      format.turbo_stream # renders the remove_from_collection.turbo_stream.erb view
+      format.html { redirect_to home_index_path, notice: 'Plant removed from your collection!' }
+    end
   end
+  
+  
+  
+  
+  
 
   def show
     @plant = current_user.plants.find(params[:id])
@@ -33,10 +42,7 @@ class HomeController < ApplicationController
 
   def set_watering
     @plant = current_user.plants.find(params[:id])
-    
-    # Calculate the duration in seconds
     duration_in_seconds = params[:timer][:days].to_i * 86400 + params[:timer][:hours].to_i * 3600 + params[:timer][:minutes].to_i * 60
-    
     # Update the plant's timer_end_at attribute with the current time plus the duration
     @plant.update(timer_end_at: Time.current + duration_in_seconds.seconds)
   
