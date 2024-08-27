@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_action :authenticate_user!, only: [:search, :add_to_collection, :remove_from_collection, :show, :set_watering]
+  before_action :authenticate_user!, only: [:search, :add_to_collection, :remove_from_collection, :show, :set_watering, :tasks]
 
   def index
     @plants = current_user.plants if user_signed_in?
@@ -30,11 +30,6 @@ class HomeController < ApplicationController
       format.html { redirect_to home_index_path, notice: 'Plant removed from your collection!' }
     end
   end
-  
-  
-  
-  
-  
 
   def show
     @plant = current_user.plants.find(params[:id])
@@ -47,6 +42,10 @@ class HomeController < ApplicationController
     @plant.update(timer_end_at: Time.current + duration_in_seconds.seconds)
   
     redirect_to home_path(@plant), notice: 'Watering timer set!'
+  end
+
+  def tasks
+    @tasks = current_user.plants.where('timer_end_at <= ?', Time.current)
   end
   
 end

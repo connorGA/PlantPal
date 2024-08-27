@@ -10,7 +10,7 @@
         <a class="nav-link" href="<%= home_index_path %>">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Tasks</a>
+        <a class="nav-link" href="<%= tasks_path %>">Tasks</a>
       </li>
 
       <%= form_with url: search_home_path, method: :get, local: true, class: "form-inline my-2 my-lg-0" do %>

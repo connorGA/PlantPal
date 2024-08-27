@@ -12,4 +12,5 @@ Rails.application.routes.draw do
       post :set_watering
     end
   end
+  get 'tasks', to: 'home#tasks'
 end
