@@ -18,7 +18,7 @@ class HomeController < ApplicationController
     plant_params = params.require(:plant).permit(:common_name, :latin_name, :image_url, :categories, :watering, :light_ideal, :url)
     plant = Plant.find_or_create_by(plant_params)
     current_user.plants << plant unless current_user.plants.include?(plant)
-    redirect_to root_path, notice: 'Plant added to your collection!'
+    redirect_to home_index_path, notice: 'Plant added to your collection!'
   end
 
   def remove_from_collection
