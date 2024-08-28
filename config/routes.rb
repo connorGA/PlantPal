@@ -13,4 +13,10 @@ Rails.application.routes.draw do
     end
   end
   get 'tasks', to: 'home#tasks'
+  resources :home do
+    member do
+      post 'watered'
+    end
+  end
+    
 end

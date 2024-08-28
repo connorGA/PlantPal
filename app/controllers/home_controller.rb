@@ -39,10 +39,21 @@ class HomeController < ApplicationController
     @plant = current_user.plants.find(params[:id])
     duration_in_seconds = params[:timer][:days].to_i * 86400 + params[:timer][:hours].to_i * 3600 + params[:timer][:minutes].to_i * 60
     # Update the plant's timer_end_at attribute with the current time plus the duration
-    @plant.update(timer_end_at: Time.current + duration_in_seconds.seconds)
+    @plant.update(timer_end_at: Time.current + duration_in_seconds.seconds, last_timer_duration: duration_in_seconds)
   
     redirect_to home_path(@plant), notice: 'Watering timer set!'
   end
+
+  def watered
+    @plant = current_user.plants.find(params[:id])
+    if @plant.last_timer_duration.present?
+      @plant.update(timer_end_at: Time.current + @plant.last_timer_duration.seconds)
+      redirect_to tasks_path, notice: 'Watering timer reset!'
+    else
+      redirect_to tasks_path, alert: 'No previous timer duration found!'
+    end
+  end
+  
 
   def tasks
     @tasks = current_user.plants.where('timer_end_at <= ?', Time.current)

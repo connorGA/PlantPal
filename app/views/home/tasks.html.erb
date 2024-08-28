@@ -17,8 +17,9 @@
               <li class="list-group-item"><strong>Light Ideal:</strong> <%= plant.light_ideal %></li>
             </ul>
             <div class="mt-auto d-flex justify-content-between align-items-center">
-              <%= link_to 'Water Plant', set_watering_home_path(plant), class: 'btn btn-success mt-2' %>
+                <%= button_to 'Water Plant', watered_home_path(plant), method: :post, class: 'btn btn-success mt-2' %>
             </div>
+
           </div>
         </div>
       </div>
