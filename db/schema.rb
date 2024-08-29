@@ -11,6 +11,12 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2024_08_27_235813) do
+  create_schema "_heroku"
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_stat_statements"
+  enable_extension "plpgsql"
+
   create_table "plants", force: :cascade do |t|
     t.string "common_name"
     t.string "latin_name"
@@ -26,8 +32,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_27_235813) do
   end
 
   create_table "user_plants", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "plant_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "plant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["plant_id"], name: "index_user_plants_on_plant_id"
