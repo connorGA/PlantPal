@@ -2,33 +2,32 @@
 
 <div class="container centered-container">
 
-<% if @tasks.any? %>
-  <div class="row">
-    <% @tasks.each do |plant| %>
-      <div class="col-sm-6 col-md-4 col-lg-3 d-flex align-items-stretch">
-        <div class="card mb-4 small-card card-hover position-relative">
-          <%= image_tag plant.image_url, class: "card-img-top fixed-img", alt: plant.common_name %>
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title text-center"><%= plant.common_name %></h5>
-            <p class="card-text mb-4">
-              <strong>Latin Name:</strong> <em><%= plant.latin_name %></em>
-            </p>
-            <ul class="list-group list-group-flush flex-grow-1">
-              <li class="list-group-item"><strong>Categories:</strong> <%= plant.categories %></li>
-              <li class="list-group-item"><strong>Watering:</strong> <%= plant.watering %></li>
-              <li class="list-group-item"><strong>Light Ideal:</strong> <%= plant.light_ideal %></li>
-            </ul>
-            <div class="mt-auto d-flex justify-content-between align-items-center">
+  <% if @tasks.any? %>
+    <div class="row justify-content-center">
+      <% @tasks.each do |plant| %>
+        <div class="col-sm-6 col-md-4 col-lg-3 d-flex align-items-stretch">
+          <div class="card mb-4 small-card card-hover position-relative">
+            <%= image_tag plant.image_url, class: "card-img-top fixed-img", alt: plant.common_name %>
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title text-center"><%= plant.common_name %></h5>
+              <p class="card-text mb-4">
+                <strong>Latin Name:</strong> <em><%= plant.latin_name %></em>
+              </p>
+              <ul class="list-group list-group-flush flex-grow-1">
+                <li class="list-group-item"><strong>Categories:</strong> <%= plant.categories %></li>
+                <li class="list-group-item"><strong>Watering:</strong> <%= plant.watering %></li>
+                <li class="list-group-item"><strong>Light Ideal:</strong> <%= plant.light_ideal %></li>
+              </ul>
+              <div class="mt-auto d-flex justify-content-between align-items-center">
                 <%= button_to 'Water Plant', watered_home_path(plant), method: :post, class: 'btn btn-success mt-2' %>
+              </div>
             </div>
-
           </div>
         </div>
-      </div>
-    <% end %>
-  </div>
-<% else %>
-  <p>No plants need watering right now.</p>
-<% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-center">No plants need watering right now.</p>
+  <% end %>
 
 </div>
