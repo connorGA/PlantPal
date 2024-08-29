@@ -7,6 +7,10 @@ h1 {
   color: rgb(255, 255, 255);
 }
 
+p {
+  color: white;
+}
+
 /* Card styles */
 .card {
   background-color: rgb(255, 221, 140);
@@ -181,3 +185,18 @@ h1 {
   margin-top: 60px; 
 }
 
+.navbar-nav .nav-item.active .nav-link {
+  color: #fff; 
+  background-color: transparent; 
+  border: none; 
+}
+
+.navbar-nav .nav-item .nav-link {
+  color: rgba(255, 255, 255, 0.75); 
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+  color: #fff; 
+  background-color: transparent; 
+  border: none; 
+}
